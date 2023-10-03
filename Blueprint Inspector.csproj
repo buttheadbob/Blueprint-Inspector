@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <RootNamespace>Blueprint_Inspector</RootNamespace>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+        <Configurations>Debug;Release</Configurations>
+        <Platforms>x64</Platforms>
+        <AssemblyName>Blueprint Inspector</AssemblyName>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+      <Page Update="View\MainWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+
+
+
+
+    <ItemGroup>
+      <PackageReference Include="Serilog" Version="3.0.1" />
+      <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+      <PackageReference Include="Serilog.Sinks.RichTextBox.Wpf" Version="1.1.0" />
+    </ItemGroup>
+
+
+
+
+
+
+
+
+    <ItemGroup>
+      <Reference Include="VRage.Math">
+        <HintPath>..\..\..\Torch\DedicatedServer64\VRage.Math.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <ItemGroup>
+      <None Remove="Fonts\Dosis-VariableFont_wght.ttf" />
+      <Resource Include="Fonts\Dosis-VariableFont_wght.ttf">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
+
+
+
+
+
+
+
+</Project>

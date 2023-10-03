@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="Blueprint_Inspector.View.ServerProfilesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Blueprint_Inspector.View"
+             xmlns:models="clr-namespace:Blueprint_Inspector.Models"
+             xmlns:blueprintInspector="clr-namespace:Blueprint_Inspector"
+             mc:Ignorable="d"
+             d:DesignHeight="380" d:DesignWidth="800" 
+             Background="#272B2F">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="Server Profiles" 
+                   Grid.Column="1" 
+                   Grid.Row="0" 
+                   Margin="5" 
+                   VerticalAlignment="Center"
+                   Foreground="Bisque"/>
+        
+        <ComboBox Name="cboServerProfileList"
+                  Grid.Column="2"
+                  Grid.Row="0" 
+                  Margin="5" 
+                  ItemsSource="{Binding 
+                                Source={x:Static blueprintInspector:Session.ServerProfileList}}"
+                  DisplayMemberPath="ServerName"
+                  SelectionChanged="CboServerBlockList_OnSelectionChanged"/>
+        
+        <ListView Name="BlocksListView" 
+                  Grid.Column="1" 
+                  Grid.ColumnSpan="2" 
+                  Grid.Row="1" 
+                  Height="300" 
+                  Background="#272B3F" 
+                  Foreground="Bisque"
+                  SelectionChanged="BlocksListView_OnSelectionChanged"
+                  ItemsSource="{Binding ListOfBlocks}" 
+                  Margin="5"/>
+        
+        <GroupBox Header="Block Details" Foreground="Beige" Grid.Column="4" Grid.Row="1" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="Type:" Margin="5" Foreground="Bisque"/>
+                <TextBlock Name="SelectedBlock_Type" Grid.Row="0" Grid.Column="2" Margin="5" Foreground="Bisque"/>
+                
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="SubType:" Margin="5" Foreground="Bisque"/>
+                <TextBlock Name="SelectedBlock_SubType" Grid.Row="1" Grid.Column="2" Margin="5" Foreground="Bisque"/>
+                
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="PCU:" Margin="5" Foreground="Bisque"/>
+                <TextBlock Name="SelectedBlock_PCU" Grid.Row="2" Grid.Column="2" Margin="5" Foreground="Bisque"/>
+                
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="Components:" Margin="5" Foreground="Bisque"/>
+                <ListView Name="BlockComponentListView" 
+                          Grid.Column="1" 
+                          Grid.ColumnSpan="2" 
+                          Grid.Row="4" 
+                          Height="180" 
+                          Background="#272B3F" 
+                          Foreground="Bisque"
+                          ItemsSource="{Binding ListOfComponents}"/>
+                
+                
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Header="Edit Block List" Grid.Column="5" Grid.Row="1" Foreground="Beige" Margin="5">
+            
+        </GroupBox>
+        
+    </Grid>
+</UserControl>
